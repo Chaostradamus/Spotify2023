@@ -5,12 +5,10 @@ import TrackListItem from "../../components/TrackListItem";
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
       <FlatList
         data={tracks}
         renderItem={({ item }) => <TrackListItem track={item} />}
       />
-    </View>
   );
 }
 
