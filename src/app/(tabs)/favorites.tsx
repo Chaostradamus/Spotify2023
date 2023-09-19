@@ -1,31 +1,42 @@
-import { StyleSheet } from 'react-native';
+import { FlatList, View, TextInput, Text, StyleSheet } from "react-native";
+import { tracks } from "../../../assets/data/tracks";
+import TrackListItem from "../../components/TrackListItem";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { FontAwesome } from "@expo/vector-icons";
+import { useState } from "react";
 
-import EditScreenInfo from '../../components/EditScreenInfo';
-import { Text, View } from '../../components/Themed';
+export default function FavoritesScreen() {
+  const [search, setSearch] = useState("default value");
 
-export default function TabTwoScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
-    </View>
+    <SafeAreaView>
+      <View style={styles.header}>
+        {/* header */}
+        <FontAwesome name="search" size={16} color="gray" />
+        <TextInput
+          value={search}
+          placeholder="flava for ya ear"
+          style={styles.input}
+        />
+        <Text style={{ color: "white" }}>Cancel</Text>
+      </View>
+
+      <FlatList
+        data={tracks}
+        renderItem={({ item }) => <TrackListItem track={item} />}
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  header: { flexDirection: "row", alignItems: "center", padding: 5 },
+  input: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    backgroundColor: "#121314",
+    padding: 8,
+    marginHorizontal: 10,
+    borderRadius: 5,
+    color: "white",
   },
 });
