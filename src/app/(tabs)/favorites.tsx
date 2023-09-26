@@ -6,7 +6,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { useState } from "react";
 
 export default function FavoritesScreen() {
-  const [search, setSearch] = useState("default value");
+  const [search, setSearch] = useState("how sucks");
 
   return (
     <SafeAreaView>
@@ -15,7 +15,7 @@ export default function FavoritesScreen() {
         <FontAwesome name="search" size={16} color="gray" />
         <TextInput
           value={search}
-          placeholder="flava for ya ear"
+          placeholder="how sucks"
           style={styles.input}
         />
         <Text style={{ color: "white" }}>Cancel</Text>
